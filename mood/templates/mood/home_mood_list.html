@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+НАСТРОЕНИЕ
+{% endblock %}
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock %}
+{% block content %}
+
+{% for item in object_list %}
+<div class="card bg-black mb-2">
+  <a class="card-header {% cycle 'text-danger' 'text-success'%}">
+    Настроение:<a href="{{item.category.get_absolut_url}}">{{item.content}}</a>
+  <div class="card" >
+    <div class="row g-5">
+      <div class="col-md-5">
+        <img src="{{item.photo.url}}" class="img-fluid rounded" alt="" width="720" height="600">
+      </div>
+      <div class="col">
+        <div class="text-bg-secondary">
+          <div class="card-body">
+            <h5 class="card-title">{{item.title}}</h5>
+            <p class="card-text">Стилистика: {{item.category}}</p>
+            <title>audio</title>
+            </head>
+            <body>
+              <audio src="{{ item.audio.url }}" controls="controls"></audio>
+            </body>
+            <p class="card-text"><small class="text-muted">{{item.created_at|date:"Y-m-d"}}</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

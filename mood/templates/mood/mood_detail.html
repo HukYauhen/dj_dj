@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+НАСТРОЕНИЕ
+{% endblock %}
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="card bg-black mb-2">
+  <a class="card-header {% cycle 'text-danger' 'text-success'%}">
+    Настроение:<a href="{{mood_item.category.get_absolut_url}}">{{mood_item.content}}</a>
+  <div class="card" >
+    <div class="row g-5">
+      <div class="col-md-5">
+        <img src="{{mood_item.photo.url}}" class="img-fluid rounded" alt="" width="600" height="800">
+      </div>
+      <div class="col">
+        <div class="text-bg-secondary">
+          <div class="card-body">
+            <h5 class="card-title">{{mood_item.title}}</h5>
+            <p class="card-text">Стилистика: {{mood_item.category}}</p>
+            <p class="card-text"><small class="text-muted">{{mood_item.created_at|date:"Y-m-d"}}</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

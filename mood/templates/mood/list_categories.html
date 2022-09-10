@@ -1,0 +1,7 @@
+<div class="list-group">
+  {% for item in categories %}
+  <a href="{{item.get_absolute_url}}" class="list-group-item list-group-item-action fs-5 fst-italic text-light
+   font-monospace text-decoration-underline text-uppercase bg-black" aria-current="true">
+    {{item.title}}</a>
+  {% endfor %}
+</div>
